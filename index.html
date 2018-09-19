@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Does it replicate?</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Frederik Aust, Tobias Heycke, &amp; Christoph Stahl" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+    <script src="libs/htmlwidgets/htmlwidgets.js"></script>
+    <script src="libs/viz/viz.js"></script>
+    <link href="libs/DiagrammeR-styles/styles.css" rel="stylesheet" />
+    <script src="libs/grViz-binding/grViz.js"></script>
+    <link rel="stylesheet" href="xaringan.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: inverse, title-slide
+
+# Does it replicate?
+## Using Bayesian model comparisons<br />to evaluate replication attempts of<br />specific 2×2-interaction patterns
+### Frederik Aust, Tobias Heycke, &amp; Christoph Stahl
+### DGPs 2018, Frankfurt, Germany
+
+---
+
+layout: true
+
+&lt;div class="sidebar"&gt;&lt;/div&gt;
+&lt;div class="sidebar2"&gt;&lt;/div&gt;
+
+&lt;div class="my-footer"&gt;
+  &lt;div style="float: left;"&gt;&lt;span&gt;Frederik Aust, Tobias Heycke, &amp; Christoph Stahl&lt;/span&gt;&lt;/div&gt;
+  &lt;div style="float: right;"&gt;&lt;span&gt;DGPs 2018, Frankfurt, Germany&lt;/span&gt;&lt;/div&gt;
+  &lt;div style="text-align: center;"&gt;&lt;span&gt;Using Bayesian model comparisons to evaluate replication attempts of specific 2&amp;times;2-interaction patterns&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script type="text/x-mathjax-config"&gt;
+MathJax.Hub.Config({
+  "HTML-CSS": {
+    scale: 150,
+  }
+});
+&lt;/script&gt;
+
+
+
+
+
+---
+# Attitude acquisition
+
+&lt;br /&gt;
+
+.pull-left[
+&lt;center&gt;&lt;img src="figures/bob.png" style="padding-bottom: 30px;"/&gt;&lt;/center&gt;
+]
+
+--
+
+.pull-right[
+&lt;br /&gt;
+
+&lt;center&gt;&lt;h3&gt;Laughed when a child fell out of a tree
+&lt;/h3&gt;&lt;/center&gt;
+]
+
+.footnote[Rydell, McConnell, Mackie, &amp; Strain (2006)]
+
+
+---
+exclude: true
+
+# Attitude acquisition
+
+.pull-left[
+&lt;center&gt;&lt;img src="figures/bob.png" style="padding-bottom: 30px;"/&gt;&lt;/center&gt;
+]
+
+--
+
+.pull-right[
+&lt;br /&gt;&lt;br /&gt;
+
+&lt;center&gt;&lt;h1&gt;Kiss&lt;/h1&gt;&lt;/center&gt;
+
+&lt;br /&gt;
+
+&lt;center&gt;Unconditioned stimulus (US)&lt;/center&gt;
+]
+
+???
+Change in liking following pairings with valent stimuli
+
+
+---
+# Attitude acquisition
+
+&lt;br /&gt;
+
+.pull-left[
+&lt;center&gt;&lt;img src="figures/bob.png" style="padding-bottom: 30px;"/&gt;&lt;/center&gt;
+]
+
+.pull-right[
+&lt;br /&gt;
+
+&lt;center&gt;&lt;h3&gt;Laughed when a child fell out of a tree
+&lt;/h3&gt;&lt;/center&gt;
+
+&lt;center&gt;&lt;h1 style="opacity:0.3;"&gt;Kiss&lt;/h1&gt;&lt;/center&gt;
+]
+
+.footnote[Rydell, McConnell, Mackie, &amp; Strain (2006)]
+
+???
+Automatic attitude without contingency awareness
+
+
+---
+# Attitude acquisition
+
+### Two minds
+
+&lt;center&gt;
+
+
+
+
+<div id="htmlwidget-bb8fedc3ffe68bb03494" style="width:600px;height:150px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-bb8fedc3ffe68bb03494">{"x":{"diagram":"\ndigraph dual_process {\n  graph [rankdir = LR, fontname = Helvetica, ranksep = 0.8, bgcolor = \"#EAE0C3\"]\n\n  node [shape = box, fontname = Helvetica, fontsize = 18, width = 2.2]\n  pairing2 [label = \"Briefly presented\nprimes\n&#128513;\", margin = 0.2]\n\n  # Latent states\n  node [shape = oval, width = 2.5]\n  associative [label = \"Associative\nlearning\", style = filled, fillcolor = \"#385E49\", fontcolor = \"#EAE0C3\"]\n\n  # Outcomes\n  node [shape = \"box\", fontname = Helvetica, margin = \"0.25,0.125\", width = 2.4, height = 0.9]\n  liking2 [label = \"IAT score\n&#128513;\"]\n\n  # Transitions\n  edge [arrowhead = \"normal\", fontname = Helvetica, fontsize = 16]\n\n  ## To latent states\n  pairing2 -> associative\n  \n  ## To observable outcomes\n  edge [label = \"\", xlabel = \"\"]\n  associative -> liking2\n\n  # Rank definition\n  {rank = same; pairing2}\n  {rank = same; associative}\n  {rank = same; liking2}\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+
+&lt;hr style="border-top: 1px dotted #2d2d2d80; text-decoration: none; border-bottom: none; width: 600px;" /&gt;
+
+<div id="htmlwidget-2e148066da89ea7ea2f3" style="width:600px;height:150px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2e148066da89ea7ea2f3">{"x":{"diagram":"\ndigraph dual_process {\n  graph [rankdir = LR, fontname = Helvetica, ranksep = 0.8, bgcolor = \"#EAE0C3\"]\n\n  node [shape = box, fontname = Helvetica, fontsize = 18, width = 2.2]\n  pairing [label = \"Descriptions\nof behavior\n&#x1F622;\", margin = 0.2]\n  awareness [label = \"US memory\"]\n\n  # Latent states\n  node [shape = oval, width = 2.5]\n  propositional [label = \"Propositional\nlearning\", style = filled, fillcolor = \"#2EA65A\"]\n\n  # Outcomes\n  node [shape = \"box\", fontname = Helvetica, margin = \"0.25,0.125\", width = 2.4, height = 0.9]\n  awareness [label = \"US memory\", width = 2.4]\n  liking [label = \"Attitude rating\n&#x1F622;\"]\n\n  # Transitions\n  edge [arrowhead = \"normal\", fontname = Helvetica, fontsize = 16]\n\n  ## To latent states\n  pairing -> propositional\n  \n  ## To observable outcomes\n  edge [label = \"\", xlabel = \"\"]\n  propositional -> awareness\n  propositional -> liking\n\n  # Rank definition\n  {rank = same; pairing}\n  {rank = same; propositional}\n  {rank = same; liking; awareness}\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+
+&lt;/center&gt;
+
+.footnote[Rydell &amp; McConnell (2006) and Rydell, McConnell, Mackie, &amp; Strain (2006)]
+
+
+---
+# Attitude acquisition
+
+### Two minds
+
+.pull-left[
+
+&lt;img src="slides_files/figure-html/rydell-results-1.jpeg" style="display: block; margin: auto;" /&gt;
+
+]
+
+.pull-right[
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-1-1.jpeg" style="display: block; margin: auto;" /&gt;
+
+]
+
+.footnote[Rydell, McConnell, Mackie, &amp; Strain (2006)]
+
+
+---
+# Attitude acquisition
+
+### Two minds
+
+.pull-left[
+
+&lt;img src="slides_files/figure-html/rydell-results2-1.jpeg" style="display: block; margin: auto;" /&gt;
+
+]
+
+.pull-right[
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-2-1.jpeg" style="display: block; margin: auto;" /&gt;
+
+]
+
+.footnote[Rydell, McConnell, Mackie, &amp; Strain (2006)]
+
+
+---
+# Attitude acquisition
+
+### Two minds
+
+.pull-left[
+
+&lt;img src="slides_files/figure-html/rydell-results3-1.jpeg" style="display: block; margin: auto;" /&gt;
+
+]
+
+.pull-right[
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-3-1.jpeg" style="display: block; margin: auto;" /&gt;
+
+]
+
+.footnote[Rydell, McConnell, Mackie, &amp; Strain (2006)]
+
+
+---
+# Attitude acquisition
+
+### Two minds
+
+.pull-left[
+
+&lt;img src="slides_files/figure-html/rydell-results4-1.jpeg" style="display: block; margin: auto;" /&gt;
+
+]
+
+.pull-right[
+
+&lt;img src="slides_files/figure-html/rydell-effectplot-1.jpeg" style="display: block; margin: auto;" /&gt;
+
+]
+
+.footnote[Rydell, McConnell, Mackie, &amp; Strain (2006)]
+
+
+---
+exclude: true
+
+# Attitude acquisition
+
+### Two minds
+
+.pull-left[
+
+&lt;img src="slides_files/figure-html/rydell-results5-1.jpeg" style="display: block; margin: auto;" /&gt;
+
+]
+
+.pull-right[
+
+&lt;img src="slides_files/figure-html/rydell-effectplot2-1.jpeg" style="display: block; margin: auto;" /&gt;
+
+]
+
+.footnote[Notable example of subliminal attitude acquisition (e.g., Sweldens, Corneille, &amp; Yzerbyt, 2014)]
+
+
+---
+exclude: true
+
+# Attitude acquisition
+
+### Two minds
+
+.pull-left[
+
+&lt;img src="slides_files/figure-html/rydell-results6-1.jpeg" style="display: block; margin: auto;" /&gt;
+
+]
+
+.pull-right[
+
+&lt;img src="slides_files/figure-html/rydell-effectplot3-1.jpeg" style="display: block; margin: auto;" /&gt;
+
+]
+
+.footnote[Notable example of subliminal attitude acquisition (e.g., Sweldens, Corneille, &amp; Yzerbyt, 2014)]
+
+
+---
+exclude: true
+
+# Attitude acquisition
+
+### Two minds
+
+.pull-left[
+
+&lt;img src="slides_files/figure-html/rydell-results7-1.jpeg" style="display: block; margin: auto;" /&gt;
+
+]
+
+.pull-right[
+
+&lt;img src="slides_files/figure-html/rydell-effectplot4-1.jpeg" style="display: block; margin: auto;" /&gt;
+
+]
+
+.footnote[Notable example of subliminal attitude acquisition (e.g., Sweldens, Corneille, &amp; Yzerbyt, 2014)]
+
+
+???
+Participants could not identify primes in memory test!
+
+
+---
+# Attitude acquisition
+
+### Two minds?
+
+--
+
+.pull-left[
+
+&lt;img src="slides_files/figure-html/heycke-results-1.jpeg" style="display: block; margin: auto;" /&gt;
+
+]
+
+.pull-right[
+
+&lt;img src="slides_files/figure-html/heycke-effectplot-1.jpeg" style="display: block; margin: auto;" /&gt;
+
+]
+
+.footnote[Heycke, Gehrmann, Haaf, &amp; Stahl (2018)]
+
+---
+# Current study
+
+- Adversarial collaboration
+- As-close-as-possible re-replication
+- Multiple labs
+    - Cologne
+    - Ghent
+    - Harvard
+
+
+.footnote[Heycke, Aust, Banaji, Conway, Van Dessel, Hu, Jiang, Kurdi, Rydell, Spitzer, Stahl, Vitiello, &amp; De Houwer (in prep)]
+
+
+&lt;!-- --- --&gt;
+&lt;!-- # Sample description --&gt;
+
+&lt;!-- Demographics table here --&gt;
+
+---
+# Evaluations of replication
+
+- ANOVA and follow-up tests
+--
+
+- Replication Bayes factors
+--
+
+- Bayesian model comparison with order-constraints
+    - Deviations from original protocol
+    - Specific interaction patterns
+
+.footnote[Rouder, Haaf, &amp; Aust (2018) also see Hoijtink (2011); Harms (in press) and Verhagen &amp; Wagenmakers (2014)]
+
+
+???
+ANOVA: Sig. vs. Non-Sig. interactions -&gt; Difference significant?
+
+Is the new Cohen’sdcloser to that of the original study or to 0
+
+Also: prior predictive p-value (Hoijtink)
+
+
+---
+# Competing hypotheses
+
+.pull-left[
+
+&lt;center&gt;Hypotheses&lt;/center&gt;
+
+&lt;img src="slides_files/figure-html/predictions-two-minds-1.jpeg" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+# Competing hypotheses
+
+.pull-left[
+
+&lt;center&gt;Hypotheses&lt;/center&gt;
+
+&lt;img src="slides_files/figure-html/predictions-one-mind-1.jpeg" style="display: block; margin: auto;" /&gt;
+
+]
+
+
+---
+# Competing hypotheses
+
+.pull-left[
+
+&lt;center&gt;Hypotheses&lt;/center&gt;
+
+&lt;img src="slides_files/figure-html/predictions-unconstrained-1.jpeg" style="display: block; margin: auto;" /&gt;
+
+]
+
+
+---
+# Competing hypotheses
+
+.pull-left[
+
+&lt;center&gt;Hypotheses&lt;/center&gt;
+
+&lt;img src="slides_files/figure-html/predictions-null-1.jpeg" style="display: block; margin: auto;" /&gt;
+
+]
+
+.pull-right[
+
+&lt;center&gt;Predictions&lt;/center&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;img src="slides_files/figure-html/prediction-plots-1.jpeg" style="display: block; margin: auto;" /&gt;
+
+
+]
+
+
+---
+# Results
+
+.pull-left[
+
+&lt;center&gt;Observed effects&lt;/center&gt;
+
+&lt;img src="slides_files/figure-html/unconstrained-plot-1.jpeg" style="display: block; margin: auto;" /&gt;
+
+
+]
+
+.pull-right[
+
+&lt;center&gt;Predictions&lt;/center&gt;
+
+&lt;img src="slides_files/figure-html/predicted-observed-plot-1.jpeg" style="display: block; margin: auto;" /&gt;
+
+]
+
+
+
+
+???
+Black-rimmed points represent means of observed attitude differences between blocks in which Bob was presented with positive descriptions and those in which he was paired with negative descriptions. Ellipses represent 95% Bayesian credible intervals based on the unconstrained model.
+
+
+---
+# Results
+
+
+
+.pull-left[
+
+&lt;center&gt;Model comparisons&lt;/center&gt;&lt;br /&gt;
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Model &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt; BF &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt; Naive PP &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; No effect &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.00 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; .00 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; One mind &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 4.00 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; .80 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Two minds &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.00 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; .00 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Any effect &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; .20 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;br /&gt;
+&lt;center&gt;BF&lt;sub&gt;One mind/Two minds&lt;/sub&gt; &gt;&gt; 10.000&lt;/center&gt;
+
+]
+
+.pull-right[
+
+&lt;center&gt;Predictions&lt;/center&gt;
+
+&lt;img src="slides_files/figure-html/predicted-observed-plot2-1.jpeg" style="display: block; margin: auto;" /&gt;
+
+]
+
+
+---
+# Results
+
+.pull-left[
+
+&lt;center&gt;Model comparisons&lt;/center&gt;&lt;br /&gt;
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Model &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt; BF &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt; Naive PP &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; No effect &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.00 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; .00 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; One mind &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 4.00 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; .25 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; &amp;nbsp;&amp;nbsp;... everywhere &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 11.05 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; .69 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Two minds &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.00 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; .00 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; &amp;nbsp;&amp;nbsp;... everywhere &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.00 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; .00 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Any effect &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; .06 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;br /&gt;
+&lt;center&gt;BF&lt;sub&gt;One mind everywhere/Two minds&lt;/sub&gt; &gt;&gt;&gt; 10.000&lt;/center&gt;
+
+]
+
+.pull-right[
+
+&lt;center&gt;Predictions&lt;/center&gt;
+
+&lt;img src="slides_files/figure-html/predicted-observed-plot3-1.jpeg" style="display: block; margin: auto;" /&gt;
+
+]
+
+
+---
+# Conclusions
+
+- We replicated Heycke, Gehrmann, Haaf, &amp; Stahl (2018)
+    - No evidence for second learning process
+    - Further studies with lower prime visibility
+--
+- Bayesian model comparison with order-constraints enable targeted
+    - evaluation of replication success
+    - informative hypothesis testing more generally
+
+
+---
+# Acknowledgments
+
+&lt;small&gt;
+- Code used for visualization of predictions by [Julia Haaf](https://psychology.missouri.edu/people/haaf) ([@JuliaHaaf](https://twitter.com/juliahaaf))
+- Title slide illustration [*Replicate This*](https://magoz.is/replicate-this/) &amp;copy; 2013 [Magoz](https://magoz.is).
+- Example images of Bob courtesy of Michael J. Tarr, Center for the Neural Basis of Cognition and Department of Psychology, Carnegie Mellon University, http://www.tarrlab.org/. Funding provided by NSF award 0339122 ([CC-BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/))
+&lt;/small&gt;
+
+
+---
+exclude: true
+
+# Statistical model
+
+.pull-left[
+
+&lt;center&gt;Encompassing unconstrained linear model&lt;/center&gt;
+
+$$
+`\begin{aligned}
+\hat y_{ijk} = &amp; \overbrace{\mu + \nu_i}^{\text{Random participant intercept}} + \overbrace{\eta_l}^{\text{Lab effects}} x_{1il}~+ \\
+          &amp; \dots \\
+          &amp; \phantom{(\overbrace{\alpha}^{\text{Rating effect}} + \overbrace{\tau_l}^{\text{Lab rating effects}} x_{1il}) x_{2j} x_{3k}~+}
+\end{aligned}`
+$$
+
+]
+
+
+---
+exclude: true
+
+# Statistical model
+
+.pull-left[
+
+&lt;center&gt;Encompassing unconstrained linear model&lt;/center&gt;
+
+$$
+`\begin{aligned}
+\hat y_{ijk} = &amp; \overbrace{\mu + \nu_i}^{\text{Random participant intercept}} + \overbrace{\eta_l}^{\text{Lab effects}} x_{1il}~+ \\
+          &amp; (\overbrace{\alpha}^{\text{Rating effect}} + \overbrace{\tau_l}^{\text{Lab rating deviation}} x_{1il}) x_{2j} x_{3k}~+ \\
+          &amp; \dots
+\end{aligned}`
+$$
+
+]
+
+
+---
+exclude: true
+
+# Statistical model
+
+.pull-left[
+
+&lt;center&gt;Encompassing unconstrained linear model&lt;/center&gt;
+
+$$
+`\begin{aligned}
+\hat y_{ijk} = &amp; \overbrace{\mu + \nu_i}^{\text{Random participant intercept}} + \overbrace{\eta_l}^{\text{Lab effects}} x_{1il}~+ \\
+          &amp; (\overbrace{\alpha}^{\text{Rating effect}} + \overbrace{\tau_l}^{\text{Lab rating deviation}} x_{1il}) x_{2j} x_{3k}~+ \\
+          &amp; (\overbrace{\beta}^{\text{IAT effect}} + \overbrace{\upsilon_l}^{\text{Lab IAT deviation}} x_{1il}) (1 -  x_{2j}) x_{3k}
+\end{aligned}`
+$$
+]
+
+.footnote[
+
+`\(x_{2j}\)` was dummy coded (1 = Rating, 0 = IAT score)&lt;br /&gt;
+`\(x_{1il}\)` and `\(x_{3k}\)` were effect coded
+
+]
+
+.pull-right[
+
+&lt;center&gt;Predictions&lt;/center&gt;
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-6-1.jpeg" style="display: block; margin: auto;" /&gt;
+
+]
+
+
+???
+The model predicts the `\(i\)`th participant's response to measure `\(j\)` in the experimental block `\(k\)`.
+Responses are predicted as a combination of a grand mean `\(\mu\)`, random participant intercepts `\(\nu_i\)` (i.e., habitually higher or lower attitudes), a main effect of the labs `\(\eta_l\)`, and simple effects of experimental block for attitude ratings ($\alpha$) and IAT score ($\beta$).
+Additionally, we allowed the simple effects to be moderated by the labs ($\tau_l$ and `\(\upsilon_l\)` represent the lab-specific deviations from the overall simple effects).
+The model does not include a main effect of attitude measure because any mean differences between attitude measures were leveled by the `\(z\)` standardization.
+`\(x_{1il}\)` represents `\(l\)` effect coded variables that indicate which lab participant `\(i\)` belongs to; `\(x_{2j}\)` indicates the attitude measure (1 for explicit attitude rating and 0 for IAT score), such that `\(\alpha + \tau_l\)` is only relevant for attitude ratings and `\(\beta + \upsilon_l\)` is only relevant for IAT scores; `\(x_{3k}\)` is an effect coded variable that is set to 0.5 for block 1 and -0.5 for block 2.
+
+
+---
+exclude: true
+
+# Priors and order-constraints
+
+.pull-left[
+
+$$
+`\begin{aligned}
+\mathcal{M}_\text{Any effect}:~ &amp; \alpha \sim \mathcal{N}(0, g_\alpha \sigma^2) \\
+  &amp; \beta \sim \mathcal{N}(0, g_\beta \sigma^2) \\
+\mathcal{M}_\text{One mind}:~ &amp; \alpha \sim \mathcal{N}^+(0, g_\alpha \sigma^2) \\
+  &amp; \beta \sim \mathcal{N}^+(0, g_\beta \sigma^2) \\
+\mathcal{M}_\text{Two minds}:~ &amp; \alpha \sim \mathcal{N}^+(0, g_\alpha \sigma^2) \\
+  &amp; \beta \sim \mathcal{N}^-(0, g_\beta \sigma^2) \\
+\mathcal{M}_\text{No effect}:~ &amp; \alpha = 0 \\ &amp; \beta = 0 \\
+  &amp; g_{\alpha}, g_{\beta} \sim \text{Inv-}\chi^2(1, r^2 = (\sqrt{2}/2)^2) \\
+\implies &amp; \delta_{\alpha}, \delta_{\beta} \sim \textrm{Cauchy}(0, r = \sqrt2/2) \\
+\end{aligned}`
+$$
+
+]
+
+.pull-rigth[
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-7-1.jpeg" style="display: block; margin: auto;" /&gt;
+
+]
+
+
+
+
+---
+exclude: true
+
+# Consistency across labs
+
+Order constraint for each lab-specific effect
+
+$$
+`\begin{aligned}
+\hat y_{ijk} = &amp; \mu + \nu_i + \eta_l x_{1il}~+ \\
+          &amp; (\overbrace{\alpha}^{\text{Rating effects}} + \tau_l x_{1il}) x_{2j} x_{3k}~+ \\
+          &amp; (\overbrace{\beta}^{\text{Lab IAT effects}} + \upsilon_l x_{1il}) (1 -  x_{2j}) x_{3k}
+\end{aligned}`
+$$
+
+
+---
+exclude: true
+
+# Consistency across labs
+
+Order constraint for each lab-specific effect
+
+$$
+`\begin{aligned}
+\hat y_{ijk} = &amp; \mu + \nu_i + \eta_l x_{1il}~+ \\
+          &amp; (\overbrace{\alpha}^{\text{Rating effects}} + \tau_l x_{1il}) x_{2j} x_{3k}~+ \\
+          &amp; (\overbrace{\beta}^{\text{Lab IAT effects}} + \upsilon_l x_{1il}) (1 -  x_{2j}) x_{3k} \\
+ &amp; \\
+\hat y_{ijk} = &amp; \mu + \nu_i + \eta_l x_{1il}~+ \\
+          &amp; (\overbrace{\alpha + \tau_l}^{\text{Lab rating effects}} x_{1il}) x_{2j} x_{3k}~+ \\
+          &amp; (\overbrace{\beta + \upsilon_l}^{\text{Lab IAT effects}} x_{1il}) (1 -  x_{2j}) x_{3k}
+\end{aligned}`
+$$
+
+
+
+---
+exclude: true
+
+# Results
+
+&lt;img src="slides_files/figure-html/ml-otm-results-1.jpeg" style="display: block; margin: auto;" /&gt;
+
+
+???
+Black-rimmed points represent condition means, error bars represent 95% bootstrap confidence intervals based on 10,000 samples, small points represent individual participants’ responses, and violins represent kernel density estiamtes of smaple distributions.
+
+
+---
+exclude: true
+
+# Results
+
+&lt;img src="slides_files/figure-html/ml-otm-results2-1.jpeg" style="display: block; margin: auto;" /&gt;
+
+
+???
+Black-rimmed points represent condition means, error bars represent 95% bootstrap confidence intervals based on 10,000 samples, small points represent individual participants’ responses, and violins represent kernel density estiamtes of smaple distributions.
+
+
+---
+exclude: true
+
+# Results
+
+&lt;img src="slides_files/figure-html/ml-otm-results3-1.jpeg" style="display: block; margin: auto;" /&gt;
+
+
+
+
+
+
+---
+exclude: true
+
+# Theoretical accounts of evaluative conditioning
+
+&lt;center&gt;
+
+.pull-left[
+
+&lt;h3&gt;Single learning process&lt;/h3&gt;
+
+<div id="htmlwidget-4611f296d5693de75b2b" style="width:450px;height:175px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4611f296d5693de75b2b">{"x":{"diagram":"\ndigraph dual_process {\n  graph [rankdir = LR, fontname = Helvetica, ranksep = 0.8, bgcolor = \"#EAE0C3\"]\n\n  node [shape = box, fontname = Helvetica, fontsize = 18]\n  pairing [label = \"CS-US\npairings\", margin = 0.2]\n\n  # Latent states\n  node [shape = oval, width = 2.5, margin = \"0.11,0.15\"]\n  propositional [label = \"Propositional\nlearning\", style = filled, fillcolor = \"#2EA65A\"]\n\n  # Outcomes\n  node [shape = \"box\", fontname = Helvetica, margin = \"0.25,0.125\", width = 2, height = 0.9]\n  liking [label = \"Attitude\"]\n  awareness [label = \"Contingency\nawareness\"]\n\n  # Transitions\n  edge [arrowhead = \"normal\", fontname = Helvetica, fontsize = 16]\n\n  ## To latent states\n  pairing -> propositional\n  \n  ## To observable outcomes\n  edge [label = \"\", xlabel = \"\"]\n  propositional -> awareness\n  propositional -> liking\n\n  # Rank definition\n  {rank = same; pairing}\n  {rank = same; propositional}\n  {rank = same; liking; awareness;}\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+
+&lt;h3&gt;"One mind"&lt;/h3&gt;
+
+&lt;/center&gt;
+
+]
+
+.pull-right[
+
+&lt;center&gt;
+
+&lt;h3&gt;Dual learning process&lt;/h3&gt;
+
+<div id="htmlwidget-43290d45973ccf3a18f9" style="width:450px;height:175px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-43290d45973ccf3a18f9">{"x":{"diagram":"\ndigraph dual_process {\n  graph [rankdir = LR, fontname = Helvetica, ranksep = 0.8, bgcolor = \"#EAE0C3\"]\n\n  node [shape = box, fontname = Helvetica, fontsize = 18]\n  pairing2 [label = \"CS-US\npairings\", margin = 0.2]\n\n  # Latent states\n  node [shape = oval, width = 2.5, margin = \"0.11,0.15\"]\n  associative2 [label = \"Associative\nlearning\", style = filled, fillcolor = \"#385E49\", fontcolor = \"#EAE0C3\"]\n  propositional2 [label = \"Propositional\nlearning\", style = filled, fillcolor = \"#2EA65A\"]\n\n  # Outcomes\n  node [shape = \"box\", fontname = Helvetica, margin = \"0.25,0.125\", width = 2, height = 0.9]\n  liking2 [label = \"Attitude\"]\n  awareness2 [label = \"Contingency\nawareness\"]\n\n  # Transitions\n  edge [arrowhead = \"normal\", fontname = Helvetica, fontsize = 16]\n\n  ## To latent states\n  pairing2 -> associative2\n  pairing2 -> propositional2\n  \n  ## To observable outcomes\n  edge [label = \"\", xlabel = \"\"]\n  associative2 -> liking2\n  propositional2 -> awareness2\n  propositional2 -> liking2\n\n  # Rank definition\n  {rank = same; pairing2}\n  {rank = same; associative2; propositional2}\n  {rank = same; liking2; awareness2}\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+
+&lt;h3&gt;"Two minds"&lt;/h3&gt;
+
+&lt;/center&gt;
+
+]
+
+.footnote[(Rydell &amp; McConnell, 2006)]
+
+
+---
+exclude: true
+
+# Theoretical accounts of evaluative conditioning
+
+&lt;center&gt;
+
+.pull-left[
+
+&lt;h3&gt;Single learning process&lt;/h3&gt;
+
+<div id="htmlwidget-2d35cdd489d798f41de3" style="width:450px;height:175px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2d35cdd489d798f41de3">{"x":{"diagram":"\ndigraph dual_process {\n  graph [rankdir = LR, fontname = Helvetica, ranksep = 0.8, bgcolor = \"#EAE0C3\"]\n\n  node [shape = box, fontname = Helvetica, fontsize = 18]\n  pairing [label = \"CS-US\npairings\", margin = 0.2]\n\n  # Latent states\n  node [shape = oval, width = 2.5, margin = \"0.11,0.15\"]\n  propositional [label = \"Propositional\nlearning\", style = filled, fillcolor = \"#2EA65A\"]\n\n  # Outcomes\n  node [shape = \"box\", fontname = Helvetica, margin = \"0.25,0.125\", width = 2, height = 0.9]\n  liking [label = \"Attitude\"]\n  awareness [label = \"Contingency\nawareness\"]\n\n  # Transitions\n  edge [arrowhead = \"normal\", fontname = Helvetica, fontsize = 16]\n\n  ## To latent states\n  pairing -> propositional\n  \n  ## To observable outcomes\n  edge [label = \"\", xlabel = \"\"]\n  propositional -> awareness\n  propositional -> liking\n\n  # Rank definition\n  {rank = same; pairing}\n  {rank = same; propositional}\n  {rank = same; liking; awareness;}\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+
+&lt;h3&gt;"One mind"&lt;/h3&gt;
+
+&lt;/center&gt;
+
+]
+
+.pull-right[
+
+&lt;center&gt;
+
+&lt;h3&gt;Dual learning process&lt;/h3&gt;
+
+<div id="htmlwidget-31a6f21768e2eef3ce7c" style="width:450px;height:175px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-31a6f21768e2eef3ce7c">{"x":{"diagram":"\ndigraph dual_process {\n  graph [rankdir = LR, fontname = Helvetica, ranksep = 0.8, bgcolor = \"#EAE0C3\"]\n\n  node [shape = box, fontname = Helvetica, fontsize = 18]\n  pairing2 [label = \"CS-US\npairings\", margin = 0.2]\n\n  # Latent states\n  node [shape = oval, width = 2.5, margin = \"0.11,0.15\"]\n  associative2 [label = \"Associative\nlearning\", style = filled, fillcolor = \"#385E49\", fontcolor = \"#EAE0C3\"]\n  propositional2 [label = \"Propositional\nlearning\", color = \"#7c7c7c\", fontcolor = \"#7c7c7c\", style = filled, fillcolor = \"#2EA65A50\"]\n\n  # Outcomes\n  node [shape = \"box\", fontname = Helvetica, margin = \"0.25,0.125\", width = 2, height = 0.9]\n  liking2 [label = \"Attitude\"]\n  awareness2 [label = \"Contingency\nawareness\"]\n\n  # Transitions\n  edge [arrowhead = \"normal\", fontname = Helvetica, fontsize = 16]\n\n  ## To latent states\n  pairing2 -> associative2\n  pairing2 -> propositional2 [color = \"#9b9b9b\", style = \"dashed\"]\n  \n  ## To observable outcomes\n  edge [label = \"\", xlabel = \"\"]\n  associative2 -> liking2\n  propositional2 -> awareness2 [color = \"#9b9b9b\", style = \"dashed\"]\n  propositional2 -> liking2 [color = \"#9b9b9b\", style = \"dashed\"]\n\n  # Rank definition\n  {rank = same; pairing2}\n  {rank = same; associative2; propositional2}\n  {rank = same; liking2; awareness2}\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+
+&lt;h3&gt;"Two minds"&lt;/h3&gt;
+
+&lt;/center&gt;
+
+]
+
+.footnote[(Lovibond &amp; Shanks, 2002)]
+
+
+???
+Independent representations
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="macros.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
